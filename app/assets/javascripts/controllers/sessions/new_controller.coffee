@@ -7,15 +7,11 @@ SoMeTracker.SessionsNewController = Ember.ObjectController.extend
         userJSON = @content.toJSON()
         userJSON.id = 'current'
         object = @store.push('user', userJSON)
-        user = @store.find 'user', 'current'
-
-        @get('controllers.currentUser').set('content', user)
+        @get('controllers.currentUser').set('content', object)
+        debugger
         @transitionToRoute 'index'
       , (a)=>
         @get('content').transitionTo('loaded.created.uncommitted')
     cancel: ->
       @content.deleteRecord()
       @transitionToRoute 'index'
-
-    test: ->
-      debugger
