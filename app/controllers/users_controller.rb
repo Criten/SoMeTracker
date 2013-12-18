@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  def create
-    user = User.new(params[:user])
+  respond_to :js, :html
 
-    if user.save
-      render json: user, status: :created
+  def create
+    @user = User.new(params[:user])
+
+    if @user.save
+      render json: @user, status: :created
     else
-      respond_with user
+      render json: @user
     end
   end
 end

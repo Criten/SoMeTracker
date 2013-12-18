@@ -1,0 +1,9 @@
+{{#if currentUser.isSignedIn}}
+  Logged in as {{currentUser.email}}
+  {{#link-to 'sessions.destroy'}}Logout{{/link-to}}
+{{else}}
+  {{#link-to 'users.new'}}Sign Up{{/link-to}} |
+  {{#link-to 'sessions.new'}}Login{{/link-to}}
+{{/if}}
+
+{{outlet}}

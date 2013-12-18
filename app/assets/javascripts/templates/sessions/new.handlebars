@@ -1,4 +1,8 @@
-<h1>Create an Account</h1>
+<h1>Login</h1>
+{{test}}
+
+<span {{action 'test'}}>asdfasdf</span>
+
 <form class="form-horizontal user-form">
   <fieldset>
     <div class="control-group" {{bind-attr class="errors.email:error"}}>
@@ -9,17 +13,8 @@
     </div>
     <div class="control-group" {{bind-attr class="errors.password:error"}}>
       {{view Ember.TextField type="password" valueBinding='password' placeholder='Password'}}
-      <span class="help-inline">
-        {{errors.password}}
-      </span>
-    </div>
-    <div class="control-group" {{bind-attr class="errors.passwordConfirmation:error"}}>
-      {{view Ember.TextField type="password" valueBinding='passwordConfirmation' placeholder='Password Confirmation'}}
-      <span class="help-inline">
-        {{errors.passwordConfirmation}}
-      </span>
     </div>
     <a href='#' {{action cancel}} class='btn'>Cancel</a>
-    <button type="submit" {{action save}} class='btn btn-large btn-primary'>Sign Up</button>
+    <button type="submit" {{action save}} class='btn btn-large btn-primary'>Login</button>
   </fieldset>
 </form>
