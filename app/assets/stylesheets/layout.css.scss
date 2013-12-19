@@ -1,0 +1,20 @@
+#header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  background: #a7c783;
+  
+  a {
+    color: white;
+
+    &:hover {
+      color: #eee;
+      text-decoration: none;
+    }
+  }
+}
+
+.body {
+  border: 1px solid gray;
+  min-height: 500px;
+}

@@ -1,6 +1,6 @@
 SoMeTracker.SessionsDestroyRoute = Ember.Route.extend
   enter: ->
-    controllerFor('currentUser').set('content', undefined)
+    @controllerFor('currentUser').set('content', undefined)
     
     @store.find('session', 'current').then (session) ->
       session.deleteRecord()
