@@ -3,6 +3,8 @@ SoMeTracker.UsersNewController = Ember.ObjectController.extend
     save: ->
       @content.save().then =>
         @transitionToRoute 'index'
+      , =>
+        @get('content').transitionTo('loaded.created.uncommitted')
 
     cancel: ->
       @content.deleteRecord()
