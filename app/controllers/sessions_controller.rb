@@ -20,4 +20,18 @@ class SessionsController < ApplicationController
     sign_out :user
     render json: {}, status: :accepted
   end
+
+  def current
+    if current_user
+      render json: {
+        session: { id: current_user.id, email: current_user.email }
+      }
+    else
+      render json: {
+        errors: {
+          email: "user not logged in"
+        }
+      }, status: :unprocessable_entity
+    end
+  end
 end

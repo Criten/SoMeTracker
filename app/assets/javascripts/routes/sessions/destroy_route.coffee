@@ -1,10 +1,13 @@
 SoMeTracker.SessionsDestroyRoute = Ember.Route.extend
   enter: ->
-    controller = @controllerFor('currentUser')
-    controller.set('content', undefined)
+    controllerFor('currentUser').set('content', undefined)
     
-    @store.find('current').then (session) ->
+    @store.find('session', 'current').then (session) ->
       session.deleteRecord()
-      session.save()
+      session.transitionTo 'deleted.uncommitted'
+      session.save().then (session) ->
+        session.transitionTo 'loaded.created.uncommitted'
+    , (e)->
+      console.log 'User isnt even logged in.. what are you doing?'
 
-    this.transitionTo('index')
+    @transitionTo 'index'
