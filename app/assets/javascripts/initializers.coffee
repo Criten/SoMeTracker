@@ -3,7 +3,8 @@ Ember.Application.initializer
 
   initialize: (container, application) ->
     store = container.lookup('store:main')
-    
+    application.deferReadiness()
+
     store.find('session', 'current').then (session) ->
       console.log 'logged in'
       userJSON = session.toJSON()
@@ -11,6 +12,6 @@ Ember.Application.initializer
       object = store.push('user', userJSON)
       container.lookup('controller:currentUser').set('content', object)
       container.typeInjection('controller', 'currentUser', 'controller:currentUser')
+      application.advanceReadiness()
     , ->
-      console.log 'not logged in!'
-
+      application.advanceReadiness()
