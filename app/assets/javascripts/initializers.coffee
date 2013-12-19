@@ -1,3 +1,9 @@
+####
+# When the app is loading we want to check to see if the user already has a current session
+# they might have refreshed the page or came back to it after leaving the page.. so this
+# initializer will check this state before the app readys.
+####
+
 Ember.Application.initializer
   name: "currentUser"
 
